@@ -1,5 +1,5 @@
-import {MarsRover} from "src/domain/marsRover/model";
-import {UserInterface} from "src/adapters/userInterface";
+import {MarsRover} from "~/domain/marsRover/model";
+import {UserInterface} from "~/adapters/userInterface";
 
 export class MarsRoverApplication {
     private marsRover: MarsRover;
@@ -13,6 +13,6 @@ export class MarsRoverApplication {
     moveMarsRover(command: string) {
         this.marsRover.move(command);
 
-        this.ui.display(this.marsRover.position());
+        this.ui.formatAndDisplay(this.marsRover.getPosition());
     }
 }

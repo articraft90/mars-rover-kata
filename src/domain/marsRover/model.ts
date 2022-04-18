@@ -35,9 +35,11 @@ export class MarsRover {
         this.position = position
     }
 
-    move(command: string) {
-        if (command === "M") {
-            this.position.coordinates.verticalAxis = this.position.coordinates.verticalAxis + 1
+    move(commandChain: string) {
+        for (const command of commandChain) {
+            if (command === "M") {
+                this.position.coordinates.verticalAxis = this.position.coordinates.verticalAxis + 1
+            }
         }
     }
 
