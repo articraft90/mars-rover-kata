@@ -1,4 +1,6 @@
 export class Grid {
+    constructor() {
+    }
 }
 
 enum Direction {
@@ -18,19 +20,19 @@ export type Position = {
     direction: Direction
 }
 
-const defaultDeployedPosition = {
+const defaultDeployedPosition = () => ({
     coordinates: {
         horizontalAxis: 0,
         verticalAxis: 0
     },
     direction: Direction.NORTH
-}
+})
 
 export class MarsRover {
     private readonly grid: Grid;
     private readonly position: Position;
 
-    constructor(grid: Grid, position: Position = defaultDeployedPosition) {
+    constructor(grid: Grid, position: Position = defaultDeployedPosition()) {
         this.grid = grid;
         this.position = position
     }
@@ -39,6 +41,14 @@ export class MarsRover {
         for (const command of commandChain) {
             if (command === "M") {
                 this.position.coordinates.verticalAxis = this.position.coordinates.verticalAxis + 1
+            }
+
+            if (command === "R") {
+                this.position.direction = Direction.EAST;
+            }
+
+            if (command === "L") {
+                this.position.direction = Direction.WEST;
             }
         }
     }
